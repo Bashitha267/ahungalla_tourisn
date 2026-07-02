@@ -2,11 +2,12 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Heart, Sparkles, Car, Users, Star, Quote } from 'lucide-react';
+import { ShieldCheck, Heart, Sparkles, Car, Users, Star, Quote, Phone, Mail, MapPin } from 'lucide-react';
 import Image from 'next/image';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function AboutPage() {
-
+  const { t } = useLanguage();
 
   const feedbacks = [
     {
@@ -52,16 +53,16 @@ export default function AboutPage() {
             className="space-y-5"
           >
             <span className="text-xs font-bold text-cyan-600 dark:text-amber-500 uppercase tracking-widest">
-              Our Vision & Roots
+              {t('about.vision.tag')}
             </span>
             <h1 className="text-4xl font-extrabold tracking-tight text-slate-800 dark:text-slate-100 sm:text-5xl">
-              Ayubowan & Welcome to Berty Tours
+              {t('about.vision.title')}
             </h1>
             <p className="text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300">
-              Founded on the golden coast of Ahungalla, Berty Tours is a boutique Sri Lankan travel agency run by passionate local experts. We believe travel should leave a positive trace. That's why we coordinate directly with remote communities, organic spice gardens, and local wildlife rangers.
+              {t('about.vision.p1')}
             </p>
             <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-              Whether you want to climb the historic Sigiriya Rock Fortress, cruise through the mangrove tunnels of the Madu River, or relax on the golden shores of Bentota, our mission is to deliver authentic, custom, and safe island expeditions.
+              {t('about.vision.p2')}
             </p>
           </motion.div>
 
@@ -76,15 +77,114 @@ export default function AboutPage() {
               alt="Madu River Safari Sri Lanka"
               fill
               className="object-cover"
+              priority
             />
+          </motion.div>
+        </section>
+
+        {/* Founder & Lead Guide Section */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center bg-white dark:bg-slate-900/40 p-6 sm:p-10 rounded-3xl border border-slate-200 dark:border-slate-800/80 shadow-sm relative overflow-hidden">
+          {/* Subtle decoration */}
+          <div className="absolute -top-10 -right-10 w-40 h-40 bg-cyan-600/5 dark:bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-cyan-600/5 dark:bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+
+          {/* Profile Photo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-4 flex flex-col items-center text-center space-y-4"
+          >
+            <div className="relative h-60 w-60 sm:h-64 sm:w-64 rounded-2xl overflow-hidden shadow-md border-4 border-white dark:border-slate-800 ring-2 ring-cyan-600/10 dark:ring-amber-500/15">
+              <Image
+                src="/owner.jpeg"
+                alt="D. D. A. De Silva - Berty"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-cyan-50 dark:bg-amber-500/10 text-cyan-700 dark:text-amber-400 border border-cyan-100 dark:border-amber-500/20">
+              SLTDA Licensed Guide
+            </span>
+          </motion.div>
+
+          {/* Details */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="lg:col-span-8 space-y-6"
+          >
+            <div className="space-y-2">
+              <span className="text-xs font-bold text-cyan-600 dark:text-amber-500 uppercase tracking-widest block">
+                {t('about.berty.tag')}
+              </span>
+              <h2 className="text-3xl font-extrabold tracking-tight text-slate-800 dark:text-slate-100">
+                {t('about.berty.title')}
+              </h2>
+              <div className="flex flex-wrap items-center gap-2 text-sm font-semibold text-slate-650 dark:text-slate-300">
+                <span>{t('about.berty.role')}</span>
+                <span className="text-slate-300 dark:text-slate-700 hidden sm:inline">•</span>
+                <span className="text-cyan-600 dark:text-amber-400 font-bold">{t('about.berty.licence')}</span>
+              </div>
+            </div>
+
+            <p className="text-sm sm:text-base leading-relaxed text-slate-600 dark:text-slate-300">
+              {t('about.berty.bio')}
+            </p>
+
+            {/* Grid for Contact Info and Services */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-slate-100 dark:border-slate-800/80">
+              <div className="space-y-3">
+                <h4 className="font-bold text-xs uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                  {t('about.berty.contact_title')}
+                </h4>
+                <div className="space-y-2.5 text-xs sm:text-sm text-slate-650 dark:text-slate-350">
+                  <a href="tel:+94776920730" className="flex items-center gap-2 hover:text-cyan-600 dark:hover:text-amber-400 transition-colors font-medium">
+                    <Phone className="h-4 w-4 text-cyan-600 dark:text-amber-400 shrink-0" />
+                    <span>+94 77 692 0730</span>
+                  </a>
+                  <a href="mailto:bertyssr@gmail.com" className="flex items-center gap-2 hover:text-cyan-600 dark:hover:text-amber-400 transition-colors font-medium">
+                    <Mail className="h-4 w-4 text-cyan-600 dark:text-amber-400 shrink-0" />
+                    <span>bertyssr@gmail.com</span>
+                  </a>
+                  <div className="flex items-start gap-2 font-medium">
+                    <MapPin className="h-4 w-4 text-cyan-600 dark:text-amber-400 shrink-0 mt-0.5" />
+                    <span>Sunshine Restaurant, Thotawatta Road, Ahungalla, Sri Lanka</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <h4 className="font-bold text-xs uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                  {t('about.berty.services_title')}
+                </h4>
+                <div className="space-y-2.5 text-xs sm:text-sm text-slate-650 dark:text-slate-355">
+                  <div className="flex items-center gap-2 font-medium">
+                    <ShieldCheck className="h-4 w-4 text-emerald-500 shrink-0" />
+                    <span>{t('about.berty.service_insurance')}</span>
+                  </div>
+                  <div className="flex items-center gap-2 font-medium">
+                    <Car className="h-4 w-4 text-cyan-600 dark:text-amber-400 shrink-0" />
+                    <span>{t('about.berty.service_taxi')}</span>
+                  </div>
+                  <div className="flex items-center gap-2 font-medium">
+                    <Sparkles className="h-4 w-4 text-amber-500 shrink-0" />
+                    <span>{t('about.berty.service_tuktuk')}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </section>
 
         {/* Meet the Service & Fleet Section */}
         <section className="space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-2">
-            <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 sm:text-3xl">Our Premium Services</h2>
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">What makes traveling with Berty Tours a first-class adventure</p>
+            <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 sm:text-3xl">{t('about.services.title')}</h2>
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">{t('about.services.sub')}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -107,10 +207,10 @@ export default function AboutPage() {
               <div className="p-6 space-y-3">
                 <div className="flex items-center space-x-2 text-cyan-600 dark:text-amber-400">
                   <Car className="h-5 w-5" />
-                  <h3 className="font-bold text-lg text-slate-800 dark:text-slate-100">Premium Private AC Fleet</h3>
+                  <h3 className="font-bold text-lg text-slate-800 dark:text-slate-100">{t('about.services.fleet.title')}</h3>
                 </div>
                 <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                  Travel across Sri Lanka in total comfort. Our fleet of modern cars, luxury vans, and SUVs are equipped with dual air-conditioning, passenger safety insurance, and baby seats on request.
+                  {t('about.services.fleet.desc')}
                 </p>
               </div>
             </motion.div>
@@ -134,10 +234,10 @@ export default function AboutPage() {
               <div className="p-6 space-y-3">
                 <div className="flex items-center space-x-2 text-cyan-600 dark:text-amber-400">
                   <Users className="h-5 w-5" />
-                  <h3 className="font-bold text-lg text-slate-800 dark:text-slate-100">Licensed Guide Lecturers</h3>
+                  <h3 className="font-bold text-lg text-slate-800 dark:text-slate-100">{t('about.services.guides.title')}</h3>
                 </div>
                 <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                  Our tours are guided by Berty and our team of SLTDA-licensed English-speaking chauffeur guides. Deeply knowledgeable about local history, wildlife, culture, and folklore, they show you the true heart of Ceylon.
+                  {t('about.services.guides.desc')}
                 </p>
               </div>
             </motion.div>
@@ -147,15 +247,15 @@ export default function AboutPage() {
         {/* Values Grid */}
         <section className="space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-2">
-            <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 sm:text-3xl">Our Foundational Pillars</h2>
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">The rules that guide how we organize our travel experiences</p>
+            <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 sm:text-3xl">{t('about.pillars.title')}</h2>
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">{t('about.pillars.sub')}</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {[
-              { icon: ShieldCheck, title: "Licensed & Secure", text: "Registered under the Sri Lanka Tourism Development Authority (SLTDA). Premium private AC vehicles and expert drivers." },
-              { icon: Heart, title: "Community First", text: "60% of all tour bookings go directly to small family-owned guesthouses, local boat rowers, and rural guides." },
-              { icon: Sparkles, title: "Bespoke Customization", text: "No two travelers are alike. We fine-tune every package to match your dates, physical capacities, and dietary needs." }
+              { icon: ShieldCheck, title: t('about.pillars.p1.title'), text: t('about.pillars.p1.desc') },
+              { icon: Heart, title: t('about.pillars.p2.title'), text: t('about.pillars.p2.desc') },
+              { icon: Sparkles, title: t('about.pillars.p3.title'), text: t('about.pillars.p3.desc') }
             ].map((v, i) => {
               const Icon = v.icon;
               return (
@@ -164,7 +264,7 @@ export default function AboutPage() {
                     <Icon className="h-5 w-5" />
                   </div>
                   <h3 className="font-bold text-slate-800 dark:text-slate-200">{v.title}</h3>
-                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-405 leading-relaxed">{v.text}</p>
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{v.text}</p>
                 </div>
               );
             })}
@@ -175,11 +275,11 @@ export default function AboutPage() {
         <section className="space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-2">
             <span className="text-xs font-bold text-cyan-600 dark:text-amber-500 uppercase tracking-widest">
-              Guest Testimonials
+              {t('about.testimonials.tag')}
             </span>
-            <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 sm:text-3xl">Loved by Travelers</h2>
+            <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 sm:text-3xl">{t('about.testimonials.title')}</h2>
             <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-              Read real feedback and stories from guests who explored Sri Lanka with Berty Tours
+              {t('about.testimonials.sub')}
             </p>
           </div>
 
@@ -205,7 +305,7 @@ export default function AboutPage() {
                         className={`h-4 w-4 ${
                           starIdx < Math.round(f.rating)
                             ? "text-amber-500 fill-amber-500"
-                            : "text-slate-350"
+                            : "text-slate-300"
                         }`}
                       />
                     ))}
@@ -215,7 +315,7 @@ export default function AboutPage() {
                   </p>
                 </div>
 
-                <div className="flex items-center space-x-3.5 pt-3 border-t border-slate-205/50 dark:border-slate-800/50">
+                <div className="flex items-center space-x-3.5 pt-3 border-t border-slate-200/50 dark:border-slate-800/50">
                   <div className="relative h-10 w-10 rounded-full overflow-hidden border border-cyan-600/30 dark:border-amber-500/30">
                     <Image
                       src={f.avatar}
@@ -234,8 +334,6 @@ export default function AboutPage() {
           </div>
         </section>
 
-
-        
       </div>
     </div>
   );
