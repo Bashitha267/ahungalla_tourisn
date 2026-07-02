@@ -4,11 +4,9 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Mail, Phone, MapPin, ShieldCheck } from 'lucide-react';
-import { useLanguage } from '@/context/LanguageContext';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const { t } = useLanguage();
 
   return (
     <footer className="relative w-full overflow-hidden border-t border-slate-200/50 dark:border-slate-800/80 text-slate-300">
@@ -42,7 +40,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-sm leading-relaxed text-slate-400">
-              {t('footer.desc')}
+              Discover the wonder of Sri Lanka. We specialize in curating boutique travel experiences across beautiful beaches, ancient ruins, misty tea hills, and tropical safaris.
             </p>
             
             {/* Social Icons */}
@@ -68,7 +66,7 @@ export default function Footer() {
               </a>
               <a href="#" className="hover:text-cyan-400 dark:hover:text-amber-400 text-slate-400 transition-colors duration-200" aria-label="WhatsApp">
                 <img
-                  src="https://img.icons8.com/?size=100&id=undefined&format=png&color=000000"
+                  src="https://img.icons8.com/?size=100&id=16712&format=png&color=000000"
                   alt="WhatsApp"
                   className="h-5 w-5 object-contain brightness-0 invert"
                 />
@@ -78,21 +76,21 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-sm font-semibold tracking-wider text-slate-200 uppercase">{t('footer.links')}</h3>
+            <h3 className="text-sm font-semibold tracking-wider text-slate-200 uppercase">Quick Links</h3>
             <ul className="mt-4 space-y-2">
               <li>
                 <Link href="/" className="text-sm hover:text-white transition-colors duration-200">
-                  {t('nav.home')}
+                  Home Page
                 </Link>
               </li>
               <li>
                 <Link href="/packages" className="text-sm hover:text-white transition-colors duration-200">
-                  {t('nav.packages')}
+                  Tour Packages
                 </Link>
               </li>
               <li>
                 <Link href="/about" className="text-sm hover:text-white transition-colors duration-200">
-                  {t('nav.about')}
+                  About Us
                 </Link>
               </li>
             </ul>
@@ -100,7 +98,7 @@ export default function Footer() {
 
           {/* Featured Packages (2 Links) */}
           <div>
-            <h3 className="text-sm font-semibold tracking-wider text-slate-200 uppercase">{t('footer.tours')}</h3>
+            <h3 className="text-sm font-semibold tracking-wider text-slate-200 uppercase">Signature Tours</h3>
             <ul className="mt-4 space-y-2">
               <li>
                 <Link href="/packages/1-day-tour" className="text-sm hover:text-white transition-colors duration-200">
@@ -117,7 +115,7 @@ export default function Footer() {
 
           {/* Contact Details */}
           <div className="space-y-4">
-            <h3 className="text-sm font-semibold tracking-wider text-slate-200 uppercase">{t('footer.contact')}</h3>
+            <h3 className="text-sm font-semibold tracking-wider text-slate-200 uppercase">Contact Us</h3>
             <ul className="mt-4 space-y-2.5">
               <li className="flex items-center space-x-2 text-sm">
                 <MapPin className="h-4.5 w-4.5 text-cyan-400 dark:text-amber-400" />
@@ -138,7 +136,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="mt-12 border-t border-slate-800 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
-          <p>© {currentYear} Berty Tours. {t('footer.rights')}</p>
+          <p>© {currentYear} Berty Tours. All rights reserved.</p>
           <div className="flex items-center space-x-1.5 mt-4 sm:mt-0">
             <ShieldCheck className="h-4 w-4 text-cyan-500 dark:text-amber-500" />
             <span>SLTDA Certified License #84729</span>
