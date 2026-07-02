@@ -1,0 +1,150 @@
+'use client';
+
+import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Mail, Phone, MapPin, ShieldCheck } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
+
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
+
+  return (
+    <footer className="relative w-full overflow-hidden border-t border-slate-200/50 dark:border-slate-800/80 text-slate-300">
+      {/* Background Image Container */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="https://res.cloudinary.com/dnfbik3if/image/upload/v1782982543/images_1_z1crso.jpg"
+          alt="Scenic Sri Lanka Coast Road"
+          fill
+          className="object-cover opacity-50 dark:opacity-30 pointer-events-none"
+        />
+        <div className="absolute inset-0 bg-slate-900/65 dark:bg-slate-950/75 backdrop-blur-[3px]" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+          
+          {/* Brand Col */}
+          <div className="space-y-4">
+            <Link href="/" className="flex items-center space-x-3 group">
+              <div className="relative h-10 w-10 rounded-xl overflow-hidden shadow-md border border-white/10 shrink-0">
+                <Image
+                  src="/BERTY TOURS.png"
+                  alt="Berty Tours Logo"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <span className="text-lg font-extrabold tracking-widest text-white uppercase select-none">
+                Berty Tours
+              </span>
+            </Link>
+            <p className="text-sm leading-relaxed text-slate-400">
+              {t('footer.desc')}
+            </p>
+            
+            {/* Social Icons */}
+            <div className="flex space-x-4 pt-2">
+              <a href="#" className="hover:text-cyan-400 dark:hover:text-amber-400 text-slate-400 transition-colors duration-200" aria-label="Facebook">
+                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
+                </svg>
+              </a>
+              <a href="#" className="hover:text-cyan-400 dark:hover:text-amber-400 text-slate-400 transition-colors duration-200" aria-label="TikTok">
+                <img
+                  src="https://img.icons8.com/?size=100&id=vXmXtbBOhqh2&format=png&color=000000"
+                  alt="TikTok"
+                  className="h-5 w-5 object-contain brightness-0 invert"
+                />
+              </a>
+              <a href="#" className="hover:text-cyan-400 dark:hover:text-amber-400 text-slate-400 transition-colors duration-200" aria-label="Instagram">
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </a>
+              <a href="#" className="hover:text-cyan-400 dark:hover:text-amber-400 text-slate-400 transition-colors duration-200" aria-label="WhatsApp">
+                <img
+                  src="https://img.icons8.com/?size=100&id=undefined&format=png&color=000000"
+                  alt="WhatsApp"
+                  className="h-5 w-5 object-contain brightness-0 invert"
+                />
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-sm font-semibold tracking-wider text-slate-200 uppercase">{t('footer.links')}</h3>
+            <ul className="mt-4 space-y-2">
+              <li>
+                <Link href="/" className="text-sm hover:text-white transition-colors duration-200">
+                  {t('nav.home')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/packages" className="text-sm hover:text-white transition-colors duration-200">
+                  {t('nav.packages')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-sm hover:text-white transition-colors duration-200">
+                  {t('nav.about')}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Featured Packages (2 Links) */}
+          <div>
+            <h3 className="text-sm font-semibold tracking-wider text-slate-200 uppercase">{t('footer.tours')}</h3>
+            <ul className="mt-4 space-y-2">
+              <li>
+                <Link href="/packages/1-day-tour" className="text-sm hover:text-white transition-colors duration-200">
+                  01 Day Tour Excursions
+                </Link>
+              </li>
+              <li>
+                <Link href="/packages/2-days-tour" className="text-sm hover:text-white transition-colors duration-200">
+                  02 Days Tour Expeditions
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Details */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold tracking-wider text-slate-200 uppercase">{t('footer.contact')}</h3>
+            <ul className="mt-4 space-y-2.5">
+              <li className="flex items-center space-x-2 text-sm">
+                <MapPin className="h-4.5 w-4.5 text-cyan-400 dark:text-amber-400" />
+                <span>Galle Road, Ahungalla, Sri Lanka</span>
+              </li>
+              <li className="flex items-center space-x-2 text-sm">
+                <Phone className="h-4.5 w-4.5 text-cyan-400 dark:text-amber-400" />
+                <span>+94 91 223 4567</span>
+              </li>
+              <li className="flex items-center space-x-2 text-sm">
+                <Mail className="h-4.5 w-4.5 text-cyan-400 dark:text-amber-400" />
+                <span>hello@bertytours.com</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        {/* Copyright */}
+        <div className="mt-12 border-t border-slate-800 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
+          <p>© {currentYear} Berty Tours. {t('footer.rights')}</p>
+          <div className="flex items-center space-x-1.5 mt-4 sm:mt-0">
+            <ShieldCheck className="h-4 w-4 text-cyan-500 dark:text-amber-500" />
+            <span>SLTDA Certified License #84729</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
