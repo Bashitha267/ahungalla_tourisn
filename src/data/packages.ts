@@ -14,7 +14,7 @@ export interface TourPackage {
   price: number;
   rating: number;
   reviewsCount: number;
-  category: '1-day' | '2-day';
+  category: 'half-day' | '1-day' | '2-day';
   description: string;
   shortDescription: string;
   highlights: string[];
@@ -27,6 +27,68 @@ export interface TourPackage {
 }
 
 export const tourPackages: TourPackage[] = [
+  {
+    id: "half-day-tour",
+    title: "Half-Day Tour Excursions",
+    tagline: "Experience the magic of mangrove safaris and turtle conservation in just half a day.",
+    duration: "Half Day / 6 Hours",
+    price: 45,
+    rating: 4.80,
+    reviewsCount: 98,
+    category: "half-day",
+    shortDescription: "A compact 6-hour private expedition covering the Madu River boat safari, cinnamon extraction, and the Kosgoda sea turtle sanctuary.",
+    description: "Ideal for travelers looking for a shorter, relaxing excursion that fits perfectly into a morning or afternoon. Witness local conservation efforts at the turtle hatchery, cruise through the rich ecosystems of the Madu River mangroves, and try traditional fish therapy—all in one convenient half-day trip with Berty Tours.",
+    highlights: [
+      "Cruising the Madu River mangrove canals",
+      "Traditional cinnamon peeling demonstration on Cinnamon Island",
+      "Visiting the sea turtle hatchery & conservation project in Kosgoda",
+      "Relaxing fish foot therapy massage",
+      "Private transport in an air-conditioned car/van"
+    ],
+    coverImageMobile: "https://res.cloudinary.com/dnfbik3if/image/upload/v1782981456/madu_fuiovg.avif",
+    coverImageDesktop: "https://res.cloudinary.com/dnfbik3if/image/upload/v1782981456/madu_fuiovg.avif",
+    images: [
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1782981454/benthota_pxd0g6.jpg",
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1782981456/madu_fuiovg.avif"
+    ],
+    included: [
+      "Private transport in an air-conditioned car/van",
+      "All fuel and toll charges",
+      "Licensed English-speaking tourist guide lecturer (Berty Tours)",
+      "Free hotel pickup and drop-off from Ahungalla/Bentota areas",
+      "Full passenger insurance coverage"
+    ],
+    excluded: [
+      "Entrance tickets (e.g. Turtle farm, River Safari boat rent)",
+      "Lunch, snacks, or alcoholic beverages",
+      "Tips for local guides/boatmen",
+      "Personal shopping and souvenirs"
+    ],
+    places: [
+      {
+        name: "Bentota & Kosgoda Coastline",
+        tagline: "Beaches, Sea Turtles, and Local Handicrafts",
+        description: "Kosgoda is world-famous for its turtle conservation projects, where you can watch green and leatherback turtles hatching safely. You will also get to see the beautiful Bentota coastline and explore local crafts.",
+        image: "https://res.cloudinary.com/dnfbik3if/image/upload/v1782981454/benthota_pxd0g6.jpg",
+        activities: [
+          "Visit the Sea Turtle Hatchery & release baby turtles",
+          "Explore the Matale/Bentota Spice and Herbal Garden",
+          "Shop for authentic local batiks and wood carvings"
+        ]
+      },
+      {
+        name: "Madu River Safari (Balapitiya)",
+        tagline: "Mangrove Estuary Boat Safari",
+        description: "The Madu Ganga is a pristine wetland estuary containing 64 islands. Board a private boat to weave through dense mangrove cave tunnels, watch local cinnamon peeling, and relax with a natural fish foot therapy massage.",
+        image: "https://res.cloudinary.com/dnfbik3if/image/upload/v1782981456/madu_fuiovg.avif",
+        activities: [
+          "Take a scenic boat safari passing minor islets",
+          "Step onto Cinnamon Island to watch traditional processing",
+          "Try the floating fish massage pedicure experience"
+        ]
+      }
+    ]
+  },
   {
     id: "1-day-tour",
     title: "01 Day Tour Excursions",

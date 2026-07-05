@@ -96,10 +96,15 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Featured Packages (2 Links) */}
+          {/* Featured Packages (3 Links) */}
           <div>
             <h3 className="text-sm font-semibold tracking-wider text-slate-200 uppercase">Signature Tours</h3>
             <ul className="mt-4 space-y-2">
+              <li>
+                <Link href="/packages/half-day-tour" className="text-sm hover:text-white transition-colors duration-200">
+                  Half-Day Tour Excursions
+                </Link>
+              </li>
               <li>
                 <Link href="/packages/1-day-tour" className="text-sm hover:text-white transition-colors duration-200">
                   01 Day Tour Excursions

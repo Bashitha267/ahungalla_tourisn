@@ -14,14 +14,12 @@ interface PackageCardProps {
 export default function PackageCard({ pkg }: PackageCardProps) {
   const getCategoryColor = (cat: string) => {
     switch (cat) {
-      case 'beach':
-        return 'bg-blue-500/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-300';
-      case 'adventure':
-        return 'bg-emerald-500/10 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-300';
-      case 'culture':
+      case 'half-day':
         return 'bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-300';
-      case 'safari':
-        return 'bg-orange-500/10 text-orange-600 dark:bg-orange-500/20 dark:text-orange-300';
+      case '1-day':
+        return 'bg-blue-500/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-300';
+      case '2-day':
+        return 'bg-emerald-500/10 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-300';
       default:
         return 'bg-slate-500/10 text-slate-600';
     }

@@ -19,7 +19,7 @@ const dictionary: Record<Language, Record<string, string>> = {
     'nav.packages': 'Packages',
     'nav.about': 'About Us',
     // Hero
-    'hero.slogan': '#CeylonForEveryone',
+    'hero.slogan': 'Breathe. Explore. Belong.',
     'hero.subtext': 'Meaningful Journeys, Lasting Memories.',
     'hero.cta': 'Explore Your Ceylon Escape',
     // Home Values

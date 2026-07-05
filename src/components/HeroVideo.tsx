@@ -46,7 +46,7 @@ export default function HeroVideo() {
           poster="https://res.cloudinary.com/dnfbik3if/image/upload/v1782327437/gLle_qhep0k.jpg"
         >
           <source
-            src="https://res.cloudinary.com/dnfbik3if/video/upload/v1782235505/srilanka_land_jarb0a.mp4"
+            src="https://res.cloudinary.com/dnfbik3if/video/upload/v1783237844/portrait_a8baae.mp4"
             type="video/mp4"
           />
         </video>
@@ -62,7 +62,7 @@ export default function HeroVideo() {
           poster="https://res.cloudinary.com/dnfbik3if/image/upload/v1782327437/gLle_qhep0k.jpg"
         >
           <source
-            src="https://res.cloudinary.com/dnfbik3if/video/upload/v1782235500/srilanka_potrait_x8fajp.mp4"
+            src="https://res.cloudinary.com/dnfbik3if/video/upload/v1783237844/portrait_a8baae.mp4"
             type="video/mp4"
           />
         </video>
