@@ -140,7 +140,7 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.5 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 bg-black/60 md:hidden"
+              className="fixed inset-0 z-[70] bg-black/60 md:hidden"
               onClick={() => setIsOpen(false)}
             />
             {/* Drawer */}
@@ -149,7 +149,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed inset-y-0 right-0 z-[60] w-72 max-w-sm glass shadow-2xl p-6 flex flex-col md:hidden border-l border-slate-200/50 dark:border-slate-800/80 bg-slate-900/95 dark:bg-slate-950/95"
+              className="fixed inset-y-0 right-0 z-[80] w-72 max-w-sm glass shadow-2xl p-6 flex flex-col md:hidden border-l border-slate-200/50 dark:border-slate-800/80 bg-slate-900/95 dark:bg-slate-950/95"
             >
               <div className="flex items-center justify-between pb-6 border-b border-slate-200 dark:border-slate-800">
                 <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center space-x-3 group">

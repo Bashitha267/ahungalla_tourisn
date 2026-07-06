@@ -51,7 +51,7 @@ export default function BookingModal({ isOpen, onClose, packageTitle, price }: B
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           {/* Backdrop */}
           <div
             className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm"

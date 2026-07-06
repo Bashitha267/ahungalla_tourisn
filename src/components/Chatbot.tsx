@@ -278,7 +278,7 @@ export default function Chatbot() {
   };
 
   return (
-    <div className="fixed bottom-20 right-6 z-50 flex flex-col items-end">
+    <div className="fixed bottom-20 right-6 z-[60] flex flex-col items-end">
       
       {/* Floating Tooltip Helper */}
       <AnimatePresence>
