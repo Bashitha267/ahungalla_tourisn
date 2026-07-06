@@ -46,9 +46,11 @@ export default function Footer() {
             {/* Social Icons */}
             <div className="flex space-x-4 pt-2">
               <a href="#" className="hover:text-cyan-400 dark:hover:text-amber-400 text-slate-400 transition-colors duration-200" aria-label="Facebook">
-                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
-                </svg>
+                <img
+                  src="https://img.icons8.com/windows/96/facebook-new.png"
+                  alt="Facebook"
+                  className="h-5 w-5 object-contain brightness-0 invert"
+                />
               </a>
               <a href="#" className="hover:text-cyan-400 dark:hover:text-amber-400 text-slate-400 transition-colors duration-200" aria-label="TikTok">
                 <img
@@ -66,7 +68,7 @@ export default function Footer() {
               </a>
               <a href="#" className="hover:text-cyan-400 dark:hover:text-amber-400 text-slate-400 transition-colors duration-200" aria-label="WhatsApp">
                 <img
-                  src="https://img.icons8.com/?size=100&id=16712&format=png&color=000000"
+                  src="https://img.icons8.com/windows/96/whatsapp--v1.png"
                   alt="WhatsApp"
                   className="h-5 w-5 object-contain brightness-0 invert"
                 />
