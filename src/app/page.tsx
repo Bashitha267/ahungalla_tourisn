@@ -144,7 +144,7 @@ export default function Home() {
               name: 'WhatsApp',
               desc: 'Chat directly with Berty for custom routes & instant support.',
               cta: 'Message Us',
-              url: 'https://img.icons8.com/?size=100&id=16713&format=png&color=000000',
+              url: 'https://img.icons8.com/windows/96/whatsapp--v1.png',
               link: 'https://wa.me/94912234567',
               colorClass: 'group-hover:text-emerald-500'
             },
@@ -168,7 +168,7 @@ export default function Home() {
               name: 'Facebook',
               desc: 'Join our page for reviews, announcements & group discounts.',
               cta: 'Join Community',
-              url: 'https://img.icons8.com/?size=100&id=118497&format=png&color=000000',
+              url: 'https://img.icons8.com/windows/96/facebook-new.png',
               link: '#',
               colorClass: 'group-hover:text-blue-500'
             }
