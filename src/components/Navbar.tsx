@@ -82,12 +82,12 @@ export default function Navbar() {
                   >
                     {isActive ? (
                       /* Active item with outline border pill */
-                      <span className="border border-white/60 dark:border-amber-500/60 rounded-full px-4 py-2 text-white dark:text-amber-400">
+                      <span className="border border-white/60 dark:border-teal-400/60 rounded-full px-4 py-2 text-white dark:text-teal-400">
                         {link.name}
                       </span>
                     ) : (
                       /* Inactive item */
-                      <span className="text-slate-200 hover:text-white dark:text-slate-300 dark:hover:text-amber-400">
+                      <span className="text-slate-200 hover:text-white dark:text-slate-300 dark:hover:text-teal-400">
                         {link.name}
                       </span>
                     )}
@@ -103,7 +103,7 @@ export default function Navbar() {
                 <button
                   onClick={() => setLanguage('en')}
                   className={`px-2.5 py-1 rounded-full transition-all duration-255 ${
-                    language === 'en' ? 'bg-cyan-600 dark:bg-amber-500 text-white dark:text-slate-950 shadow-md' : 'hover:text-white'
+                    language === 'en' ? 'bg-cyan-600 dark:bg-teal-400 text-white dark:text-slate-900 shadow-md' : 'hover:text-white'
                   }`}
                 >
                   EN
@@ -111,7 +111,7 @@ export default function Navbar() {
                 <button
                   onClick={() => setLanguage('de')}
                   className={`px-2.5 py-1 rounded-full transition-all duration-255 ${
-                    language === 'de' ? 'bg-cyan-600 dark:bg-amber-500 text-white dark:text-slate-950 shadow-md' : 'hover:text-white'
+                    language === 'de' ? 'bg-cyan-600 dark:bg-teal-400 text-white dark:text-slate-900 shadow-md' : 'hover:text-white'
                   }`}
                 >
                   DE
@@ -172,7 +172,7 @@ export default function Navbar() {
                     <button
                       onClick={() => setLanguage('en')}
                       className={`px-2 py-0.5 rounded-full transition-all duration-200 ${
-                        language === 'en' ? 'bg-cyan-600 dark:bg-amber-500 text-white dark:text-slate-950' : 'text-slate-405'
+                        language === 'en' ? 'bg-cyan-600 dark:bg-teal-400 text-white dark:text-slate-900' : 'text-slate-405'
                       }`}
                     >
                       EN
@@ -180,7 +180,7 @@ export default function Navbar() {
                     <button
                       onClick={() => setLanguage('de')}
                       className={`px-2 py-0.5 rounded-full transition-all duration-200 ${
-                        language === 'de' ? 'bg-cyan-600 dark:bg-amber-500 text-white dark:text-slate-950' : 'text-slate-405'
+                        language === 'de' ? 'bg-cyan-600 dark:bg-teal-400 text-white dark:text-slate-900' : 'text-slate-405'
                       }`}
                     >
                       DE
@@ -207,7 +207,7 @@ export default function Navbar() {
                       onClick={() => setIsOpen(false)}
                       className={`flex items-center space-x-4 px-4 py-3.5 rounded-xl transition-all duration-200 ${
                         isActive
-                          ? 'bg-cyan-600/10 text-cyan-700 dark:bg-amber-500/10 dark:text-amber-400 font-semibold border-l-4 border-cyan-600 dark:border-amber-500'
+                           ? 'bg-cyan-600/10 text-cyan-700 dark:bg-teal-400/10 dark:text-teal-400 font-semibold border-l-4 border-cyan-600 dark:border-teal-400'
                           : 'text-slate-350 hover:bg-slate-800'
                       }`}
                     >

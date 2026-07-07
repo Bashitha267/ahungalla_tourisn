@@ -10,13 +10,24 @@
   --color-ocean-light: #eef2f7;
   --color-ocean-sand: #ff7a00;
   
-  --color-gold-primary: #f59e0b;
-  --color-gold-secondary: #fbbf24;
-  --color-gold-dark: #b45309;
+  --color-gold-primary: #00bcd4;
+  --color-gold-secondary: #1de9b6;
+  --color-gold-dark: #0097a7;
   
   --color-jungle-night: #060a13;
   --color-jungle-dark: #0f1626;
   --color-jungle-card: #1e293b;
+
+  /* ── Light Teal Accent Palette (from travel app design) ── */
+  --color-teal-vivid: #1de9b6;
+  --color-teal-bright: #00bcd4;
+  --color-teal-soft: #4dd0e1;
+  --color-teal-pale: #b2ebf2;
+  --color-teal-glow: rgba(29, 233, 182, 0.25);
+  --color-teal-border: rgba(0, 188, 212, 0.35);
+  --color-teal-card: rgba(29, 233, 182, 0.08);
+  --color-cyan-light: #e0f7fa;
+  --color-cyan-mist: rgba(224, 247, 250, 0.06);
   
   --animate-scroll-left: scroll-left 40s linear infinite;
   --animate-scroll-right: scroll-right 40s linear infinite;
@@ -50,9 +61,18 @@
   --background: #060a13;
   --foreground: #f1f5f9;
   --card-bg: rgba(15, 22, 38, 0.75);
-  --card-border: rgba(245, 158, 11, 0.2);
+  --card-border: rgba(0, 188, 212, 0.2);
   --nav-bg: rgba(6, 10, 19, 0.85);
-  --glow-color: rgba(245, 158, 11, 0.3);
+  --glow-color: rgba(29, 233, 182, 0.3);
+
+  /* Teal light blends active in dark mode */
+  --teal-accent: #1de9b6;
+  --teal-accent-dim: rgba(29, 233, 182, 0.15);
+  --teal-highlight: #00bcd4;
+  --teal-highlight-glow: rgba(0, 188, 212, 0.3);
+  --teal-text-soft: #b2ebf2;
+  --teal-card-bg: rgba(29, 233, 182, 0.07);
+  --teal-card-border: rgba(77, 208, 225, 0.2);
 }
 
 * {
@@ -132,12 +152,59 @@ body {
 
 /* Glowing effects for Dark Mode (Relic theme) */
 .dark .gold-glow {
-  text-shadow: 0 0 10px rgba(245, 158, 11, 0.5), 0 0 20px rgba(245, 158, 11, 0.2);
+  text-shadow: 0 0 10px rgba(0, 188, 212, 0.5), 0 0 20px rgba(29, 233, 182, 0.2);
 }
 
 .dark .gold-border-glow:hover {
-  border-color: rgba(245, 158, 11, 0.7);
-  box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+  border-color: rgba(0, 188, 212, 0.7);
+  box-shadow: 0 0 15px rgba(29, 233, 182, 0.3);
+}
+
+/* ── Teal Light Accent Glow Effects (blended from travel app design) ── */
+.dark .teal-glow {
+  text-shadow: 0 0 12px rgba(29, 233, 182, 0.6), 0 0 24px rgba(0, 188, 212, 0.3);
+}
+
+.dark .teal-border-glow {
+  border-color: rgba(29, 233, 182, 0.4);
+  box-shadow: 0 0 18px rgba(29, 233, 182, 0.2);
+}
+
+.dark .teal-border-glow:hover {
+  border-color: rgba(0, 188, 212, 0.75);
+  box-shadow: 0 0 24px rgba(0, 188, 212, 0.35), 0 0 48px rgba(29, 233, 182, 0.12);
+}
+
+.dark .teal-card {
+  background: var(--teal-card-bg, rgba(29, 233, 182, 0.07));
+  border: 1px solid var(--teal-card-border, rgba(77, 208, 225, 0.2));
+  box-shadow: 0 4px 24px rgba(29, 233, 182, 0.08);
+}
+
+.dark .teal-card:hover {
+  background: rgba(29, 233, 182, 0.12);
+  border-color: rgba(0, 188, 212, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 188, 212, 0.2);
+}
+
+.teal-badge {
+  background: linear-gradient(135deg, #1de9b6 0%, #00bcd4 100%);
+  color: #060a13;
+  font-weight: 600;
+}
+
+.text-gradient-teal {
+  background: linear-gradient(135deg, #1de9b6 0%, #4dd0e1 50%, #b2ebf2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.teal-divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #1de9b6, #00bcd4, transparent);
+  opacity: 0.35;
 }
 
 /* 3D Floating Animations */
@@ -163,7 +230,7 @@ body {
 }
 
 .text-gradient-gold {
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #b45309 100%);
+  background: linear-gradient(135deg, #1de9b6 0%, #00bcd4 50%, #0097a7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

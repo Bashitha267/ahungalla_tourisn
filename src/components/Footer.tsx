@@ -45,28 +45,28 @@ export default function Footer() {
             
             {/* Social Icons */}
             <div className="flex space-x-4 pt-2">
-              <a href="#" className="hover:text-cyan-400 dark:hover:text-amber-400 text-slate-400 transition-colors duration-200" aria-label="Facebook">
+              <a href="#" className="hover:text-cyan-400 dark:hover:text-teal-400 text-slate-400 transition-colors duration-200" aria-label="Facebook">
                 <img
                   src="https://img.icons8.com/windows/96/facebook-new.png"
                   alt="Facebook"
                   className="h-5 w-5 object-contain brightness-0 invert"
                 />
               </a>
-              <a href="#" className="hover:text-cyan-400 dark:hover:text-amber-400 text-slate-400 transition-colors duration-200" aria-label="TikTok">
+              <a href="#" className="hover:text-cyan-400 dark:hover:text-teal-400 text-slate-400 transition-colors duration-200" aria-label="TikTok">
                 <img
                   src="https://img.icons8.com/?size=100&id=vXmXtbBOhqh2&format=png&color=000000"
                   alt="TikTok"
                   className="h-5 w-5 object-contain brightness-0 invert"
                 />
               </a>
-              <a href="#" className="hover:text-cyan-400 dark:hover:text-amber-400 text-slate-400 transition-colors duration-200" aria-label="Instagram">
+              <a href="#" className="hover:text-cyan-400 dark:hover:text-teal-400 text-slate-400 transition-colors duration-200" aria-label="Instagram">
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                 </svg>
               </a>
-              <a href="#" className="hover:text-cyan-400 dark:hover:text-amber-400 text-slate-400 transition-colors duration-200" aria-label="WhatsApp">
+              <a href="#" className="hover:text-cyan-400 dark:hover:text-teal-400 text-slate-400 transition-colors duration-200" aria-label="WhatsApp">
                 <img
                   src="https://img.icons8.com/windows/96/whatsapp--v1.png"
                   alt="WhatsApp"
@@ -129,19 +129,19 @@ export default function Footer() {
                   href="https://maps.app.goo.gl/tTZPvknzLy2iVU9NA"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 hover:text-cyan-400 dark:hover:text-amber-400 transition-colors duration-200"
+                  className="flex items-center space-x-2 hover:text-cyan-400 dark:hover:text-teal-400 transition-colors duration-200"
                   aria-label="View our location on Google Maps"
                 >
-                  <MapPin className="h-4.5 w-4.5 text-cyan-400 dark:text-amber-400 shrink-0" />
+                  <MapPin className="h-4.5 w-4.5 text-cyan-400 dark:text-teal-400 shrink-0" />
                   <span>Galle Road, Ahungalla, Sri Lanka</span>
                 </a>
               </li>
               <li className="flex items-center space-x-2 text-sm">
-                <Phone className="h-4.5 w-4.5 text-cyan-400 dark:text-amber-400" />
+                <Phone className="h-4.5 w-4.5 text-cyan-400 dark:text-teal-400" />
                 <span>+94 91 223 4567</span>
               </li>
               <li className="flex items-center space-x-2 text-sm">
-                <Mail className="h-4.5 w-4.5 text-cyan-400 dark:text-amber-400" />
+                <Mail className="h-4.5 w-4.5 text-cyan-400 dark:text-teal-400" />
                 <span>hello@bertytours.com</span>
               </li>
             </ul>
@@ -153,7 +153,7 @@ export default function Footer() {
         <div className="mt-12 border-t border-slate-800 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
           <p>© {currentYear} Berty Tours. All rights reserved.</p>
           <div className="flex items-center space-x-1.5 mt-4 sm:mt-0">
-            <ShieldCheck className="h-4 w-4 text-cyan-500 dark:text-amber-500" />
+            <ShieldCheck className="h-4 w-4 text-cyan-500 dark:text-teal-400" />
             <span>SLTDA Certified License #84729</span>
           </div>
         </div>

@@ -33,7 +33,7 @@ export default function PackageDetailPage({ params }: PageProps) {
         </p>
         <Link
           href="/packages"
-          className="rounded-xl bg-cyan-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-cyan-500 dark:bg-amber-500 dark:text-slate-950 dark:hover:bg-amber-600"
+          className="rounded-xl bg-cyan-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-cyan-500 dark:bg-teal-500 dark:text-slate-900 dark:hover:bg-teal-400"
         >
           Back to Catalog
         </Link>
@@ -43,12 +43,12 @@ export default function PackageDetailPage({ params }: PageProps) {
 
   return (
     <div className="w-full py-8 bg-slate-50/30 dark:bg-slate-950/20">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8">
         
         {/* Back Link */}
         <Link
           href="/packages"
-          className="inline-flex items-center space-x-1.5 text-sm font-semibold text-slate-500 hover:text-cyan-650 dark:hover:text-amber-400 transition-colors"
+          className="inline-flex items-center space-x-1.5 text-sm font-semibold text-slate-500 hover:text-cyan-650 dark:hover:text-teal-400 transition-colors"
         >
           <ChevronLeft className="h-4.5 w-4.5" />
           <span>Back to Catalog</span>
@@ -57,7 +57,7 @@ export default function PackageDetailPage({ params }: PageProps) {
         {/* Title Header with Booking CTA */}
         <div className="space-y-4">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-cyan-600 dark:bg-amber-500/15 dark:text-amber-400">
+            <span className="inline-flex items-center rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-cyan-600 dark:bg-teal-400/15 dark:text-teal-400">
               Berty Tours
             </span>
             <span className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-650 dark:bg-slate-800 dark:text-slate-300">
@@ -79,7 +79,7 @@ export default function PackageDetailPage({ params }: PageProps) {
             {/* Header Booking Button */}
             <button
               onClick={() => setIsModalOpen(true)}
-              className="flex items-center justify-center rounded-full bg-cyan-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg hover:bg-cyan-700 active:scale-95 transition-all duration-200 dark:bg-amber-500 dark:text-slate-950 dark:hover:bg-amber-600 shrink-0"
+              className="flex items-center justify-center rounded-full bg-cyan-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg hover:bg-cyan-700 active:scale-95 transition-all duration-200 dark:bg-teal-500 dark:text-slate-900 dark:hover:bg-teal-400 shrink-0"
             >
               <span>Book / Inquire Now</span>
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -88,24 +88,11 @@ export default function PackageDetailPage({ params }: PageProps) {
         </div>
 
 
-        {/* Overview Card */}
-        <div className="glass p-6 sm:p-8 rounded-3xl space-y-4 bg-white/70 dark:bg-slate-900/50">
-          <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100">About this Expedition</h3>
-          <p className="text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300">
-            {pkg.description}
-          </p>
-        </div>
+
 
         {/* Destinations & Alternating Itinerary Blocks */}
         <div className="space-y-12">
-          <div className="border-b border-slate-200 dark:border-slate-800 pb-4">
-            <h3 className="text-2xl font-extrabold text-slate-800 dark:text-slate-100 tracking-tight">
-              Expedition Destinations & Itinerary
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
-              Explore the places visited in this package, formatted with custom highlights
-            </p>
-          </div>
+
 
           <div className="space-y-16">
             {pkg.places.map((place, index) => {
@@ -124,7 +111,7 @@ export default function PackageDetailPage({ params }: PageProps) {
                   {/* Place details content */}
                   <div className="w-full md:w-1/2 space-y-4">
                     <div className="flex items-center space-x-3">
-                      <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-cyan-600 dark:bg-amber-500 text-white dark:text-slate-950 font-bold text-xs">
+                      <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-cyan-600 dark:bg-teal-500 text-white dark:text-slate-900 font-bold text-xs">
                         {index + 1}
                       </span>
                       <h4 className="text-xl font-bold text-slate-800 dark:text-slate-100">
@@ -132,7 +119,7 @@ export default function PackageDetailPage({ params }: PageProps) {
                       </h4>
                     </div>
                     
-                    <span className="inline-block text-xs font-semibold text-cyan-600 dark:text-amber-400 bg-cyan-600/5 dark:bg-amber-500/5 px-2.5 py-1 rounded-lg">
+                    <span className="inline-block text-xs font-semibold text-cyan-600 dark:text-teal-400 bg-cyan-600/5 dark:bg-teal-400/5 px-2.5 py-1 rounded-lg">
                       {place.tagline}
                     </span>
                     
@@ -184,7 +171,7 @@ export default function PackageDetailPage({ params }: PageProps) {
         </div>
 
         {/* Bottom Booking CTA Banner */}
-        <div className="glass p-8 sm:p-10 rounded-[32px] text-center bg-cyan-600/5 dark:bg-amber-500/5 border border-cyan-600/20 dark:border-amber-500/20 space-y-6">
+        <div className="glass p-8 sm:p-10 rounded-[32px] text-center bg-cyan-600/5 dark:bg-teal-400/5 border border-cyan-600/20 dark:border-teal-400/20 space-y-6">
           <div className="max-w-xl mx-auto space-y-2">
             <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100">
               Ready to Book Your Custom Expedition?
@@ -195,7 +182,7 @@ export default function PackageDetailPage({ params }: PageProps) {
           </div>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="inline-flex items-center justify-center rounded-full bg-cyan-600 px-8 py-4 text-sm font-bold text-white shadow-lg hover:bg-cyan-700 active:scale-95 transition-all duration-200 dark:bg-amber-500 dark:text-slate-950 dark:hover:bg-amber-600"
+            className="inline-flex items-center justify-center rounded-full bg-cyan-600 px-8 py-4 text-sm font-bold text-white shadow-lg hover:bg-cyan-700 active:scale-95 transition-all duration-200 dark:bg-teal-500 dark:text-slate-900 dark:hover:bg-teal-400"
           >
             <span>Inquire / Book this Tour</span>
             <ArrowRight className="ml-2 h-4 w-4" />

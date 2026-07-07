@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import { motion } from 'framer-motion';
@@ -14,7 +14,7 @@ export default function PackagesPage() {
         
         {/* Title Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
-          <span className="text-xs font-bold text-cyan-600 dark:text-amber-500 uppercase tracking-widest">
+          <span className="text-xs font-bold text-cyan-600 dark:text-teal-400 uppercase tracking-widest">
             Tailored Experiences
           </span>
           <h1 className="text-4xl font-extrabold tracking-tight text-slate-800 dark:text-slate-100 sm:text-5xl">
@@ -70,23 +70,23 @@ export default function PackagesPage() {
                     <div className="space-y-3">
                       {/* Duration and Rating */}
                       <div className="flex flex-wrap gap-4 items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-                        <span className="flex items-center space-x-1.5 font-semibold text-cyan-600 dark:text-amber-400 uppercase tracking-widest">
+                        <span className="flex items-center space-x-1.5 font-semibold text-cyan-600 dark:text-teal-300 uppercase tracking-widest">
                           <Tag className="h-3.5 w-3.5" />
                           <span>{pkg.category} Package</span>
                         </span>
                         <span className="flex items-center space-x-1">
-                          <Clock className="h-3.5 w-3.5 text-cyan-600 dark:text-amber-400" />
+                          <Clock className="h-3.5 w-3.5 text-cyan-600 dark:text-teal-300" />
                           <span className="font-semibold text-slate-700 dark:text-slate-300">{pkg.duration}</span>
                         </span>
                         <span className="flex items-center space-x-1 font-semibold text-slate-800 dark:text-slate-200">
-                          <Star className="h-3.5 w-3.5 text-amber-500 fill-amber-500" />
+                          <Star className="h-3.5 w-3.5 text-teal-400 fill-teal-400" />
                           <span>{pkg.rating}</span>
                           <span className="text-slate-400 font-normal">({pkg.reviewsCount} reviews)</span>
                         </span>
                       </div>
 
                       {/* Title */}
-                      <h3 className="text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-100 group-hover:text-cyan-600 dark:group-hover:text-amber-400 transition-colors duration-200">
+                      <h3 className="text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-100 group-hover:text-cyan-600 dark:group-hover:text-teal-300 transition-colors duration-200">
                         {pkg.title}
                       </h3>
 
@@ -106,7 +106,7 @@ export default function PackagesPage() {
                               key={idx}
                               className="inline-flex items-center text-xs font-semibold px-3 py-1 bg-slate-100 text-slate-700 dark:bg-slate-800/80 dark:text-slate-300 rounded-xl border border-slate-200/50 dark:border-slate-700/50"
                             >
-                              <span className="h-1.5 w-1.5 rounded-full bg-cyan-600 dark:bg-amber-500 mr-2" />
+                              <span className="h-1.5 w-1.5 rounded-full bg-cyan-600 dark:bg-teal-400 mr-2" />
                               {place.name.split(' & ')[0]}
                             </span>
                           ))}
@@ -121,7 +121,7 @@ export default function PackagesPage() {
                       </span>
                       <Link
                         href={`/packages/${pkg.id}`}
-                        className="inline-flex items-center justify-center rounded-xl bg-cyan-600 px-5 py-3 text-sm font-bold text-white shadow-md hover:bg-cyan-700 active:scale-95 transition-all duration-200 dark:bg-amber-500 dark:text-slate-950 dark:hover:bg-amber-600"
+                        className="inline-flex items-center justify-center rounded-xl bg-cyan-600 px-5 py-3 text-sm font-bold text-white shadow-md hover:bg-cyan-700 active:scale-95 transition-all duration-200 dark:bg-teal-400 dark:text-slate-900 dark:hover:bg-teal-300"
                       >
                         <span>View Expedition Details</span>
                         <ArrowRight className="ml-2 h-4 w-4" />
