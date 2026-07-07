@@ -4,35 +4,67 @@
   --font-cursive: 'Playball', cursive;
   --font-sans: 'Montserrat', sans-serif;
   
-  --color-ocean-primary: #0b3c5d;
-  --color-ocean-secondary: #328cc1;
-  --color-ocean-accent: #ff7a00;
-  --color-ocean-light: #eef2f7;
-  --color-ocean-sand: #ff7a00;
+  --color-ocean-primary: #08253a;
+  --color-ocean-secondary: #0ea5e9;
+  --color-ocean-accent: #38bdf8;
+  --color-ocean-light: #f0f9ff;
+  --color-ocean-sand: #38bdf8;
   
-  --color-gold-primary: #00bcd4;
-  --color-gold-secondary: #1de9b6;
-  --color-gold-dark: #0097a7;
+  --color-gold-primary: #38bdf8;
+  --color-gold-secondary: #0ea5e9;
+  --color-gold-dark: #0284c7;
   
-  --color-jungle-night: #060a13;
-  --color-jungle-dark: #0f1626;
-  --color-jungle-card: #1e293b;
+  --color-jungle-night: #020710;
+  --color-jungle-dark: #070e1b;
+  --color-jungle-card: #0d1527;
 
-  /* ── Light Teal Accent Palette (from travel app design) ── */
-  --color-teal-vivid: #1de9b6;
-  --color-teal-bright: #00bcd4;
-  --color-teal-soft: #4dd0e1;
-  --color-teal-pale: #b2ebf2;
-  --color-teal-glow: rgba(29, 233, 182, 0.25);
-  --color-teal-border: rgba(0, 188, 212, 0.35);
-  --color-teal-card: rgba(29, 233, 182, 0.08);
-  --color-cyan-light: #e0f7fa;
-  --color-cyan-mist: rgba(224, 247, 250, 0.06);
+  /* ── Light Sky Blue Accent Palette (matching mobile travel app design) ── */
+  --color-teal-vivid: #38bdf8;
+  --color-teal-bright: #0ea5e9;
+  --color-teal-soft: #7dd3fc;
+  --color-teal-pale: #bae6fd;
+  --color-teal-glow: rgba(56, 189, 248, 0.25);
+  --color-teal-border: rgba(14, 165, 233, 0.35);
+  --color-teal-card: rgba(56, 189, 248, 0.08);
+  --color-cyan-light: #bae6fd;
+  --color-cyan-mist: rgba(186, 230, 253, 0.06);
   
+  /* Override built-in Tailwind cyan palette to match light blue theme */
+  --color-cyan-50: #f0f9ff;
+  --color-cyan-100: #e0f2fe;
+  --color-cyan-200: #bae6fd;
+  --color-cyan-300: #7dd3fc;
+  --color-cyan-400: #38bdf8;
+  --color-cyan-500: #0ea5e9;
+  --color-cyan-600: #0284c7;
+  --color-cyan-700: #0369a1;
+  --color-cyan-800: #075985;
+  --color-cyan-900: #0c4a6e;
+  --color-cyan-950: #082f49;
+
+  /* Override built-in Tailwind teal palette to match light blue theme */
+  --color-teal-50: #f0f9ff;
+  --color-teal-100: #e0f2fe;
+  --color-teal-200: #bae6fd;
+  --color-teal-300: #7dd3fc;
+  --color-teal-400: #38bdf8;
+  --color-teal-500: #0ea5e9;
+  --color-teal-600: #0284c7;
+  --color-teal-700: #0369a1;
+  --color-teal-800: #075985;
+  --color-teal-900: #0c4a6e;
+  --color-teal-950: #082f49;
+
   --animate-scroll-left: scroll-left 40s linear infinite;
   --animate-scroll-right: scroll-right 40s linear infinite;
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  
+  /* Liquid animation classes */
+  --animate-blob-one: blob-one 20s ease-in-out infinite;
+  --animate-blob-two: blob-two 25s ease-in-out infinite;
+  --animate-blob-three: blob-three 22s ease-in-out infinite;
+  --animate-blob-four: blob-four 28s ease-in-out infinite;
   
   @keyframes scroll-left {
     0% { transform: translateX(0); }
@@ -46,33 +78,51 @@
     0%, 100% { transform: translateY(0px) rotate(0deg); }
     50% { transform: translateY(-10px) rotate(1deg); }
   }
+  @keyframes blob-one {
+    0%, 100% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(60px, -80px) scale(1.15); }
+    66% { transform: translate(-40px, 40px) scale(0.85); }
+  }
+  @keyframes blob-two {
+    0%, 100% { transform: translate(0px, 0px) scale(1); }
+    50% { transform: translate(-80px, 60px) scale(1.2); }
+  }
+  @keyframes blob-three {
+    0%, 100% { transform: translate(0px, 0px) scale(1); }
+    40% { transform: translate(50px, 80px) scale(1.1); }
+    70% { transform: translate(-30px, -50px) scale(0.9); }
+  }
+  @keyframes blob-four {
+    0%, 100% { transform: translate(0px, 0px) scale(1); }
+    50% { transform: translate(30px, -60px) scale(1.15); }
+  }
 }
 
 :root {
-  --background: #f0f4f8;
-  --foreground: #0c2340;
-  --card-bg: #ffffff;
-  --card-border: rgba(12, 35, 64, 0.08);
-  --nav-bg: #0c2b46;
-  --glow-color: rgba(11, 92, 143, 0.1);
+  --background: #020710;
+  --foreground: #f8fafc;
+  --card-bg: rgba(8, 18, 33, 0.65);
+  --card-border: rgba(56, 189, 248, 0.2);
+  --nav-bg: rgba(2, 7, 16, 0.8);
+  --glow-color: rgba(56, 189, 248, 0.2);
 }
 
 .dark {
-  --background: #060a13;
-  --foreground: #f1f5f9;
-  --card-bg: rgba(15, 22, 38, 0.75);
-  --card-border: rgba(0, 188, 212, 0.2);
-  --nav-bg: rgba(6, 10, 19, 0.85);
-  --glow-color: rgba(29, 233, 182, 0.3);
+  --background: #020710;
+  --foreground: #f8fafc;
+  --card-bg: rgba(8, 18, 33, 0.65);
+  --card-border: rgba(56, 189, 248, 0.2);
+  --nav-bg: rgba(2, 7, 16, 0.85);
+  --glow-color: rgba(56, 189, 248, 0.25);
 
   /* Teal light blends active in dark mode */
-  --teal-accent: #1de9b6;
-  --teal-accent-dim: rgba(29, 233, 182, 0.15);
-  --teal-highlight: #00bcd4;
-  --teal-highlight-glow: rgba(0, 188, 212, 0.3);
-  --teal-text-soft: #b2ebf2;
-  --teal-card-bg: rgba(29, 233, 182, 0.07);
-  --teal-card-border: rgba(77, 208, 225, 0.2);
+  --teal-accent: #38bdf8;
+  --teal-accent-dim: rgba(56, 189, 248, 0.15);
+  --teal-highlight: #0ea5e9;
+  --teal-highlight-glow: rgba(14, 165, 233, 0.35);
+  --teal-text-soft: #bae6fd;
+  --teal-card-bg: rgba(56, 189, 248, 0.05);
+  --teal-card-border: rgba(125, 211, 252, 0.18);
 }
 
 * {

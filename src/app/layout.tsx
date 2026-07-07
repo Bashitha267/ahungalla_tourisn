@@ -6,6 +6,7 @@ import { LanguageProvider } from "@/context/LanguageContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
+import LiquidBackground from "@/components/LiquidBackground";
 
 const playball = Playball({
   variable: "--font-cursive",
@@ -89,7 +90,8 @@ export default function RootLayout({
       className={`${montserrat.variable} ${playball.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
+      <body className="min-h-full flex flex-col transition-colors duration-300 relative text-slate-100">
+        <LiquidBackground />
         <ThemeProvider>
           <LanguageProvider>
             <Navbar />
