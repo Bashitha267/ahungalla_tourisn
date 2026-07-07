@@ -139,7 +139,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
           {[
             {
               name: 'WhatsApp',
@@ -172,6 +172,14 @@ export default function Home() {
               url: 'https://img.icons8.com/windows/96/facebook-new.png',
               link: '#',
               colorClass: 'group-hover:text-blue-500'
+            },
+            {
+              name: 'Visit Us',
+              desc: 'Find our location on Galle Road in Ahungalla, Sri Lanka.',
+              cta: 'Get Directions',
+              url: 'https://img.icons8.com/windows/96/map-marker.png',
+              link: 'https://maps.app.goo.gl/tTZPvknzLy2iVU9NA',
+              colorClass: 'group-hover:text-red-500'
             }
           ].map((social, idx) => (
             <motion.a
