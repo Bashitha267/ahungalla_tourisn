@@ -125,8 +125,16 @@ export default function Footer() {
             <h3 className="text-sm font-semibold tracking-wider text-slate-200 uppercase">Contact Us</h3>
             <ul className="mt-4 space-y-2.5">
               <li className="flex items-center space-x-2 text-sm">
-                <MapPin className="h-4.5 w-4.5 text-cyan-400 dark:text-amber-400" />
-                <span>Galle Road, Ahungalla, Sri Lanka</span>
+                <a
+                  href="https://maps.app.goo.gl/tTZPvknzLy2iVU9NA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 hover:text-cyan-400 dark:hover:text-amber-400 transition-colors duration-200"
+                  aria-label="View our location on Google Maps"
+                >
+                  <MapPin className="h-4.5 w-4.5 text-cyan-400 dark:text-amber-400 shrink-0" />
+                  <span>Galle Road, Ahungalla, Sri Lanka</span>
+                </a>
               </li>
               <li className="flex items-center space-x-2 text-sm">
                 <Phone className="h-4.5 w-4.5 text-cyan-400 dark:text-amber-400" />
