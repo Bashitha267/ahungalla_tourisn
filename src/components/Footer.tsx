@@ -66,7 +66,7 @@ export default function Footer() {
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                 </svg>
               </a>
-              <a href="#" className="hover:text-cyan-400 dark:hover:text-teal-400 text-slate-400 transition-colors duration-200" aria-label="WhatsApp">
+              <a href="https://wa.me/94776920730" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 dark:hover:text-teal-400 text-slate-400 transition-colors duration-200" aria-label="WhatsApp">
                 <img
                   src="https://img.icons8.com/windows/96/whatsapp--v1.png"
                   alt="WhatsApp"
@@ -137,8 +137,10 @@ export default function Footer() {
                 </a>
               </li>
               <li className="flex items-center space-x-2 text-sm">
-                <Phone className="h-4.5 w-4.5 text-cyan-400 dark:text-teal-400" />
-                <span>+94 91 223 4567</span>
+                <a href="tel:+94776920730" className="flex items-center space-x-2 hover:text-cyan-400 dark:hover:text-teal-400 transition-colors duration-200">
+                  <Phone className="h-4.5 w-4.5 text-cyan-400 dark:text-teal-400" />
+                  <span>+94 77 692 0730</span>
+                </a>
               </li>
               <li className="flex items-center space-x-2 text-sm">
                 <Mail className="h-4.5 w-4.5 text-cyan-400 dark:text-teal-400" />

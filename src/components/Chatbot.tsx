@@ -29,7 +29,7 @@ export default function Chatbot() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Constants
-  const WHATSAPP_NUMBER = '94912234567';
+  const WHATSAPP_NUMBER = '94776920730';
   const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
 
   const FAQS_EN: FAQItem[] = [
@@ -195,7 +195,7 @@ export default function Chatbot() {
       }
       if (lower.includes('kontakt') || lower.includes('telefon') || lower.includes('nummer') || lower.includes('handy') || lower.includes('mail') || lower.includes('whatsapp')) {
         return {
-          response: 'Berty ist direkt auf WhatsApp erreichbar unter +94 91 223 4567. Alternativ können Sie uns eine E-Mail an hello@bertytours.com schreiben.',
+          response: 'Berty ist direkt auf WhatsApp erreichbar unter +94 77 692 0730. Alternativ können Sie uns eine E-Mail an hello@bertytours.com schreiben.',
           hasWA: true
         };
       }
@@ -238,7 +238,7 @@ export default function Chatbot() {
       }
       if (lower.includes('contact') || lower.includes('phone') || lower.includes('number') || lower.includes('call') || lower.includes('email') || lower.includes('whatsapp')) {
         return {
-          response: 'You can contact Berty directly on WhatsApp at +94 91 223 4567 or email us at hello@bertytours.com.',
+          response: 'You can contact Berty directly on WhatsApp at +94 77 692 0730 or email us at hello@bertytours.com.',
           hasWA: true
         };
       }
