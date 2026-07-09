@@ -1,13 +1,65 @@
-﻿'use client';
+'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { tourPackages } from '@/data/packages';
+import { createClient } from '@/lib/supabase';
+import type { DbTourPackage, DbPackagePlace } from '@/lib/supabase';
 import { Clock, Star, ArrowRight, Tag } from 'lucide-react';
 
+// Adapter: map DB format → shape that the existing JSX uses
+function adaptPackage(p: DbTourPackage & { package_places?: DbPackagePlace[] }) {
+  return {
+    id: p.id,
+    title: p.title,
+    tagline: p.tagline ?? '',
+    duration: p.duration ?? '',
+    price: p.price,
+    rating: p.rating,
+    reviewsCount: p.reviews_count,
+    category: p.category,
+    description: p.description ?? '',
+    shortDescription: p.short_description ?? '',
+    highlights: p.highlights ?? [],
+    coverImageMobile: p.cover_image_mobile ?? '',
+    coverImageDesktop: p.cover_image_desktop ?? '',
+    images: p.images ?? [],
+    included: p.included ?? [],
+    excluded: p.excluded ?? [],
+    places: (p.package_places ?? []).map(pl => ({
+      name: pl.name,
+      tagline: pl.tagline ?? '',
+      description: pl.description ?? '',
+      image: pl.image ?? '',
+      activities: pl.activities ?? [],
+    })),
+  };
+}
+
 export default function PackagesPage() {
+  const [packages, setPackages] = useState(tourPackages);
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const supabase = createClient();
+        const { data } = await supabase
+          .from('tour_packages')
+          .select('*, package_places(*)')
+          .eq('is_active', true)
+          .order('sort_order', { ascending: true });
+        if (data && data.length > 0) {
+          setPackages(data.map(adaptPackage));
+        }
+      } catch {
+        // Fall back to static data silently
+      }
+    };
+    load();
+  }, []);
+
   return (
     <div className="w-full min-h-screen py-10 bg-slate-50/30 dark:bg-slate-950/20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10">
@@ -28,7 +80,7 @@ export default function PackagesPage() {
         {/* Catalog List */}
         <div>
           <div className="space-y-12">
-            {tourPackages.map((pkg, index) => {
+            {packages.map((pkg, index) => {
               const isEven = index % 2 === 0;
               return (
                 <motion.div

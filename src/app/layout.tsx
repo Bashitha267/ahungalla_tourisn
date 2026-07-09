@@ -3,10 +3,8 @@ import { Playball, Montserrat } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { LanguageProvider } from "@/context/LanguageContext";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import Chatbot from "@/components/Chatbot";
 import LiquidBackground from "@/components/LiquidBackground";
+import PublicShell from "@/components/PublicShell";
 
 const playball = Playball({
   variable: "--font-cursive",
@@ -94,12 +92,9 @@ export default function RootLayout({
         <LiquidBackground />
         <ThemeProvider>
           <LanguageProvider>
-            <Navbar />
-            <main className="flex-grow flex flex-col w-full">
+            <PublicShell>
               {children}
-            </main>
-            <Footer />
-            <Chatbot />
+            </PublicShell>
           </LanguageProvider>
         </ThemeProvider>
       </body>

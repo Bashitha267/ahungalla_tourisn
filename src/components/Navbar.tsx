@@ -36,6 +36,7 @@ export default function Navbar() {
   const navLinks = [
     { name: t('nav.home'), href: '/', icon: Compass },
     { name: t('nav.packages'), href: '/packages', icon: MapPin },
+    { name: 'Portfolio', href: '/portfolio', icon: Award },
     { name: t('nav.about'), href: '/about', icon: Award },
   ];
 

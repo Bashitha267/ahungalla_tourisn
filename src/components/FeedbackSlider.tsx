@@ -1,46 +1,81 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { createClient } from '@/lib/supabase';
+import type { DbFeedback } from '@/lib/supabase';
 
-const feedbacks = [
+// Fallback static feedbacks for when DB is empty or not configured
+const staticFeedbacks = [
   {
-    id: 1,
-    name: "Sarah Jenkins",
+    id: 'static-1',
+    tourist_name: "Sarah Jenkins",
     country: "United Kingdom",
-    text: "An absolute dream vacation! Scaling the Sigiriya Rock Fortress at sunrise was unforgettable. Our guide shared rich history at every corner. The hospitality in Sri Lanka is truly unmatched.",
+    message: "An absolute dream vacation! Scaling the Sigiriya Rock Fortress at sunrise was unforgettable. Our guide shared rich history at every corner. The hospitality in Sri Lanka is truly unmatched.",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80"
   },
   {
-    id: 2,
-    name: "David & Lea Rossi",
+    id: 'static-2',
+    tourist_name: "David & Lea Rossi",
     country: "Italy",
-    text: "The blue train ride from Nuwara Eliya to Ella was the absolute highlight of our honeymoon. The emerald green tea valleys stretching forever left us speechless. CeylonVibe curated the perfect trip!",
+    message: "The blue train ride from Nuwara Eliya to Ella was the absolute highlight of our honeymoon. The emerald green tea valleys stretching forever left us speechless. Berty Tours curated the perfect trip!",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=150&q=80"
   },
   {
-    id: 3,
-    name: "Kenji Sato",
+    id: 'static-3',
+    tourist_name: "Kenji Sato",
     country: "Japan",
-    text: "Spotting a leopard lounging on a tree branch in Yala was magical. Our private 4x4 driver tracker had eagle eyes. The luxury wilderness tents felt incredibly premium and eco-friendly.",
+    message: "Spotting a leopard lounging on a tree branch in Yala was magical. Our private 4x4 driver tracker had eagle eyes. The luxury wilderness tents felt incredibly premium and eco-friendly.",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80"
   },
   {
-    id: 4,
-    name: "Amara Lopez",
+    id: 'static-4',
+    tourist_name: "Amara Lopez",
     country: "Australia",
-    text: "Strolling along the cobblestone streets of Galle Fort was like traveling back in time. The seafood by the ocean was spectacular and releasing baby turtles into the sea was an emotional highlight.",
-    rating: 4.8,
+    message: "Strolling along the cobblestone streets of Galle Fort was like traveling back in time. The seafood by the ocean was spectacular and releasing baby turtles into the sea was an emotional highlight.",
+    rating: 5,
     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80"
   }
 ];
 
+interface FeedbackItem {
+  id: string;
+  tourist_name: string;
+  country: string | null;
+  message: string;
+  rating: number;
+  avatar?: string;
+}
+
 export default function FeedbackSlider() {
+  const [feedbacks, setFeedbacks] = useState<FeedbackItem[]>(staticFeedbacks);
   const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const loadFeedbacks = async () => {
+      try {
+        const supabase = createClient();
+        const { data, error } = await supabase
+          .from('feedbacks')
+          .select('id, tourist_name, country, message, rating')
+          .eq('status', 'published')
+          .order('created_at', { ascending: false })
+          .limit(10);
+
+        if (!error && data && data.length > 0) {
+          setFeedbacks(data);
+        }
+      } catch {
+        // Fall back to static data silently
+      }
+    };
+
+    loadFeedbacks();
+  }, []);
 
   const prevStep = () => {
     setIndex((prev) => (prev === 0 ? feedbacks.length - 1 : prev - 1));
@@ -50,21 +85,21 @@ export default function FeedbackSlider() {
     setIndex((prev) => (prev === feedbacks.length - 1 ? 0 : prev + 1));
   };
 
-  // Handle mobile swipe drag endings
-  const handleDragEnd = (event: any, info: any) => {
-    if (info.offset.x > 50) {
-      prevStep();
-    } else if (info.offset.x < -50) {
-      nextStep();
-    }
+  const handleDragEnd = (_event: unknown, info: { offset: { x: number } }) => {
+    if (info.offset.x > 50) prevStep();
+    else if (info.offset.x < -50) nextStep();
   };
 
   const current = feedbacks[index];
+  if (!current) return null;
+
+  // Generate initials avatar for DB feedbacks without avatars
+  const getInitials = (name: string) => name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
 
   return (
     <section className="py-16 bg-slate-100/50 dark:bg-slate-900/40 relative overflow-hidden">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        
+
         {/* Header */}
         <div className="text-center mb-10 space-y-2">
           <h2 className="text-3xl font-extrabold tracking-tight text-slate-800 dark:text-slate-100 sm:text-4xl">
@@ -77,7 +112,7 @@ export default function FeedbackSlider() {
 
         {/* Swipe container */}
         <div className="relative glass rounded-3xl p-6 sm:p-10 shadow-xl min-h-[300px] flex flex-col justify-between overflow-hidden">
-          
+
           {/* Quote Icon Background */}
           <div className="absolute top-4 right-6 text-cyan-600/10 dark:text-amber-500/10 pointer-events-none">
             <Quote className="h-28 w-28 scale-y-[-1]" />
@@ -113,20 +148,26 @@ export default function FeedbackSlider() {
 
                   {/* Review Text */}
                   <p className="text-base sm:text-lg italic leading-relaxed text-slate-700 dark:text-slate-300">
-                    "{current.text}"
+                    &quot;{current.message}&quot;
                   </p>
 
                   {/* Reviewer Details */}
                   <div className="flex items-center space-x-4 pt-4">
-                    <img
-                      src={current.avatar}
-                      alt={current.name}
-                      className="h-12 w-12 rounded-full object-cover border-2 border-cyan-500/50 dark:border-amber-500/50"
-                      draggable={false}
-                    />
+                    {(current as FeedbackItem & { avatar?: string }).avatar ? (
+                      <img
+                        src={(current as FeedbackItem & { avatar?: string }).avatar}
+                        alt={current.tourist_name}
+                        className="h-12 w-12 rounded-full object-cover border-2 border-cyan-500/50 dark:border-amber-500/50"
+                        draggable={false}
+                      />
+                    ) : (
+                      <div className="h-12 w-12 rounded-full bg-gradient-to-br from-cyan-500 to-teal-500 border-2 border-cyan-500/50 flex items-center justify-center shrink-0">
+                        <span className="text-white font-bold text-sm">{getInitials(current.tourist_name)}</span>
+                      </div>
+                    )}
                     <div>
-                      <h4 className="font-bold text-slate-800 dark:text-slate-100">{current.name}</h4>
-                      <p className="text-xs text-slate-500 dark:text-slate-400">{current.country}</p>
+                      <h4 className="font-bold text-slate-800 dark:text-slate-100">{current.tourist_name}</h4>
+                      {current.country && <p className="text-xs text-slate-500 dark:text-slate-400">{current.country}</p>}
                     </div>
                   </div>
                 </div>
@@ -168,9 +209,9 @@ export default function FeedbackSlider() {
               </button>
             </div>
           </div>
-          
+
         </div>
-        
+
         {/* Mobile Swipe Tip */}
         <p className="text-center text-xs text-slate-400 mt-3 select-none pointer-events-none md:hidden">
           Swipe left or right to change feedback

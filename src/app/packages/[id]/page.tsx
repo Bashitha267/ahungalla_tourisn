@@ -1,9 +1,11 @@
 'use client';
 
-import React, { use, useState } from 'react';
+import React, { use, useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { tourPackages } from '@/data/packages';
+import { createClient } from '@/lib/supabase';
+import type { DbTourPackage, DbPackagePlace } from '@/lib/supabase';
 import BookingModal from '@/components/BookingModal';
 import ThreeDCard from '@/components/ThreeDCard';
 import { ChevronLeft, Clock, Check, ArrowRight, Calendar, MapPin } from 'lucide-react';
@@ -17,11 +19,56 @@ export default function PackageDetailPage({ params }: PageProps) {
   // Resolve params using React's use hook
   const { id } = use(params);
 
-  // Find the package in the database
-  const pkg = tourPackages.find((p) => p.id === id);
+  // Find the package — start with static data for instant render, then hydrate from Supabase
+  const staticPkg = tourPackages.find((p) => p.id === id);
+  const [pkg, setPkg] = useState(staticPkg);
 
   // States
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const supabase = createClient();
+        const [pkgRes, placesRes] = await Promise.all([
+          supabase.from('tour_packages').select('*').eq('id', id).single(),
+          supabase.from('package_places').select('*').eq('package_id', id).order('sort_order'),
+        ]);
+        if (pkgRes.data) {
+          const p: DbTourPackage = pkgRes.data;
+          const places: DbPackagePlace[] = placesRes.data || [];
+          setPkg({
+            id: p.id,
+            title: p.title,
+            tagline: p.tagline ?? '',
+            duration: p.duration ?? '',
+            price: p.price,
+            rating: p.rating,
+            reviewsCount: p.reviews_count,
+            category: p.category as 'half-day' | '1-day' | '2-day',
+            description: p.description ?? '',
+            shortDescription: p.short_description ?? '',
+            highlights: p.highlights ?? [],
+            coverImageMobile: p.cover_image_mobile ?? '',
+            coverImageDesktop: p.cover_image_desktop ?? '',
+            images: p.images ?? [],
+            included: p.included ?? [],
+            excluded: p.excluded ?? [],
+            places: places.map(pl => ({
+              name: pl.name,
+              tagline: pl.tagline ?? '',
+              description: pl.description ?? '',
+              image: pl.image ?? '',
+              activities: pl.activities ?? [],
+            })),
+          });
+        }
+      } catch {
+        // Keep static data
+      }
+    };
+    load();
+  }, [id]);
 
   if (!pkg) {
     return (
