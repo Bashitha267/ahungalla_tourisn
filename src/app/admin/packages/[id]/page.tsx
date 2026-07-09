@@ -337,14 +337,6 @@ export default function PackageEditPage() {
           <ArrayField label="Additional Images (URLs)" value={form.images} onChange={v => setField('images', v)} />
         </section>
 
-        {/* Lists */}
-        <section className="bg-slate-800/40 border border-white/5 rounded-2xl p-6 space-y-6">
-          <h2 className="text-base font-semibold text-white mb-4">Lists</h2>
-          <ArrayField label="Highlights" value={form.highlights} onChange={v => setField('highlights', v)} />
-          <ArrayField label="Included" value={form.included} onChange={v => setField('included', v)} />
-          <ArrayField label="Excluded" value={form.excluded} onChange={v => setField('excluded', v)} />
-        </section>
-
         {/* Places */}
         <section className="bg-slate-800/40 border border-white/5 rounded-2xl p-6 space-y-4">
           <div className="flex items-center justify-between mb-4">
