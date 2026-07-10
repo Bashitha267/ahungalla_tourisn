@@ -48,11 +48,19 @@ export default async function FeedbackTokenPage({ params }: Props) {
         {/* Card */}
         <div className="bg-slate-800/60 backdrop-blur border border-white/10 rounded-2xl p-8 space-y-5">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-teal-500 flex items-center justify-center">
-              <span className="text-white font-bold text-lg">
-                {feedback.tourist_name.charAt(0).toUpperCase()}
-              </span>
-            </div>
+            {feedback.avatar_url ? (
+              <img
+                src={feedback.avatar_url}
+                alt={feedback.tourist_name}
+                className="w-12 h-12 rounded-full object-cover border border-white/10"
+              />
+            ) : (
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-teal-500 flex items-center justify-center">
+                <span className="text-white font-bold text-lg">
+                  {feedback.tourist_name.charAt(0).toUpperCase()}
+                </span>
+              </div>
+            )}
             <div>
               <h2 className="font-bold text-white">{feedback.tourist_name}</h2>
               {feedback.country && (

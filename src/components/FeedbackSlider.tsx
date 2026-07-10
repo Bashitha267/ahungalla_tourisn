@@ -48,6 +48,7 @@ interface FeedbackItem {
   country: string | null;
   message: string;
   rating: number;
+  avatar_url?: string | null;
   avatar?: string;
 }
 
@@ -61,7 +62,7 @@ export default function FeedbackSlider() {
         const supabase = createClient();
         const { data, error } = await supabase
           .from('feedbacks')
-          .select('id, tourist_name, country, message, rating')
+          .select('id, tourist_name, country, message, rating, avatar_url')
           .eq('status', 'published')
           .order('created_at', { ascending: false })
           .limit(10);
@@ -153,9 +154,9 @@ export default function FeedbackSlider() {
 
                   {/* Reviewer Details */}
                   <div className="flex items-center space-x-4 pt-4">
-                    {(current as FeedbackItem & { avatar?: string }).avatar ? (
+                    {(current.avatar_url || current.avatar) ? (
                       <img
-                        src={(current as FeedbackItem & { avatar?: string }).avatar}
+                        src={current.avatar_url || current.avatar}
                         alt={current.tourist_name}
                         className="h-12 w-12 rounded-full object-cover border-2 border-cyan-500/50 dark:border-amber-500/50"
                         draggable={false}

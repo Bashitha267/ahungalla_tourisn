@@ -56,6 +56,7 @@ export interface DbFeedback {
   package_id: string | null;
   status: 'pending' | 'published' | 'rejected';
   share_token: string;
+  avatar_url: string | null;
   created_at: string;
 }
 

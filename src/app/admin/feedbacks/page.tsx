@@ -121,28 +121,41 @@ export default function AdminFeedbacksPage() {
             <div key={feedback.id} className="bg-slate-800/40 border border-white/5 rounded-2xl p-5">
               <div className="flex items-start justify-between gap-4">
                 {/* Info */}
-                <div className="flex-1 min-w-0 space-y-2">
-                  <div className="flex items-center gap-3 flex-wrap">
-                    <span className="font-semibold text-white text-sm">{feedback.tourist_name}</span>
-                    {feedback.country && (
-                      <span className="flex items-center gap-1 text-xs text-slate-400">
-                        <Globe className="w-3 h-3" /> {feedback.country}
-                      </span>
-                    )}
-                    {/* Stars */}
-                    <div className="flex">
-                      {[1, 2, 3, 4, 5].map(s => (
-                        <Star key={s} className={`w-3.5 h-3.5 ${s <= feedback.rating ? 'fill-amber-400 text-amber-400' : 'text-slate-600'}`} />
-                      ))}
+                <div className="flex-1 min-w-0 flex gap-3.5">
+                  {feedback.avatar_url ? (
+                    <img
+                      src={feedback.avatar_url}
+                      alt={feedback.tourist_name}
+                      className="w-10 h-10 rounded-full object-cover border border-white/10 shrink-0 animate-fade-in"
+                    />
+                  ) : (
+                    <div className="w-10 h-10 rounded-full bg-slate-700/80 border border-white/10 flex items-center justify-center text-xs font-bold text-white shrink-0">
+                      {feedback.tourist_name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}
                     </div>
-                  </div>
-                  <p className="text-sm text-slate-300 leading-relaxed">{feedback.message}</p>
-                  <div className="flex items-center gap-2 text-xs text-slate-500">
-                    <Clock className="w-3 h-3" />
-                    {new Date(feedback.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
-                    {feedback.package_id && (
-                      <><span>·</span><span>Package: {feedback.package_id}</span></>
-                    )}
+                  )}
+                  <div className="flex-1 min-w-0 space-y-2">
+                    <div className="flex items-center gap-3 flex-wrap">
+                      <span className="font-semibold text-white text-sm">{feedback.tourist_name}</span>
+                      {feedback.country && (
+                        <span className="flex items-center gap-1 text-xs text-slate-400">
+                          <Globe className="w-3 h-3" /> {feedback.country}
+                        </span>
+                      )}
+                      {/* Stars */}
+                      <div className="flex">
+                        {[1, 2, 3, 4, 5].map(s => (
+                          <Star key={s} className={`w-3.5 h-3.5 ${s <= feedback.rating ? 'fill-amber-400 text-amber-400' : 'text-slate-600'}`} />
+                        ))}
+                      </div>
+                    </div>
+                    <p className="text-sm text-slate-300 leading-relaxed">{feedback.message}</p>
+                    <div className="flex items-center gap-2 text-xs text-slate-500">
+                      <Clock className="w-3 h-3" />
+                      {new Date(feedback.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
+                      {feedback.package_id && (
+                        <><span>·</span><span>Package: {feedback.package_id}</span></>
+                      )}
+                    </div>
                   </div>
                 </div>
 

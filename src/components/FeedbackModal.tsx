@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { createClient } from '@/lib/supabase';
-import { X, Star, Send, CheckCircle } from 'lucide-react';
+import { X, Star, Send, CheckCircle, User, Upload } from 'lucide-react';
 
 interface FeedbackModalProps {
   isOpen: boolean;
@@ -18,10 +18,43 @@ export default function FeedbackModal({ isOpen, onClose, packages = [] }: Feedba
     message: '',
     package_id: '',
   });
+  const [avatarUrl, setAvatarUrl] = useState('');
+  const [uploadingAvatar, setUploadingAvatar] = useState(false);
+  const [avatarError, setAvatarError] = useState('');
   const [hoveredStar, setHoveredStar] = useState(0);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
+
+  const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploadingAvatar(true);
+    setAvatarError('');
+
+    try {
+      const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'dnfbik3if';
+      const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || 'ml_default';
+
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('upload_preset', uploadPreset);
+      formData.append('folder', 'berty-tours/avatars');
+
+      const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!res.ok) throw new Error('Upload failed');
+      const data = await res.json();
+      setAvatarUrl(data.secure_url);
+    } catch (err: any) {
+      setAvatarError(err.message || 'Image upload failed');
+    } finally {
+      setUploadingAvatar(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,6 +70,7 @@ export default function FeedbackModal({ isOpen, onClose, packages = [] }: Feedba
         message: form.message.trim(),
         package_id: form.package_id || null,
         status: 'pending',
+        avatar_url: avatarUrl || null,
       });
 
       if (dbError) throw dbError;
@@ -50,6 +84,8 @@ export default function FeedbackModal({ isOpen, onClose, packages = [] }: Feedba
 
   const handleClose = () => {
     setForm({ tourist_name: '', country: '', rating: 5, message: '', package_id: '' });
+    setAvatarUrl('');
+    setAvatarError('');
     setSubmitted(false);
     setError('');
     onClose();
@@ -129,6 +165,39 @@ export default function FeedbackModal({ isOpen, onClose, packages = [] }: Feedba
                     />
                   </div>
                 </div>
+
+                {/* Profile Picture Upload */}
+                <div className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-xl p-3">
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden border border-white/10 bg-slate-800/80 flex items-center justify-center shrink-0">
+                    {avatarUrl ? (
+                      <img src={avatarUrl} alt="Avatar" className="w-full h-full object-cover" />
+                    ) : uploadingAvatar ? (
+                      <span className="w-4 h-4 rounded-full border-2 border-cyan-500/30 border-t-cyan-500 animate-spin" />
+                    ) : (
+                      <User className="w-6 h-6 text-slate-500" />
+                    )}
+                  </div>
+                  <div className="flex-1 space-y-1">
+                    <label className="block text-xs font-medium text-slate-300">Profile Picture (optional)</label>
+                    <div className="flex items-center gap-2">
+                      <label className="cursor-pointer px-3 py-1.5 bg-slate-700/60 hover:bg-slate-700 border border-white/10 rounded-lg text-xs font-semibold text-white flex items-center gap-1 transition-all select-none">
+                        <Upload className="w-3 h-3" />
+                        <span>{uploadingAvatar ? 'Uploading...' : 'Upload'}</span>
+                        <input type="file" accept="image/*" onChange={handleAvatarChange} className="hidden" disabled={uploadingAvatar} />
+                      </label>
+                      {avatarUrl && (
+                        <button
+                          type="button"
+                          onClick={() => setAvatarUrl('')}
+                          className="px-3 py-1.5 border border-red-500/20 hover:border-red-500/40 text-red-400 hover:text-red-300 text-xs font-semibold rounded-lg transition-all"
+                        >
+                          Remove
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+                {avatarError && <p className="text-[11px] text-red-400 mt-1">{avatarError}</p>}
 
                 {/* Rating stars */}
                 <div>
