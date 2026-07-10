@@ -334,7 +334,6 @@ export default function PackageEditPage() {
               onChange={url => setField('cover_image_desktop', url)}
             />
           </div>
-          <ArrayField label="Additional Images (URLs)" value={form.images} onChange={v => setField('images', v)} />
         </section>
 
         {/* Places */}

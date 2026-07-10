@@ -55,21 +55,39 @@ export default function Footer() {
 
               {/* Social Icons */}
               <div className="flex space-x-4 pt-2">
-                <a href="#" className="hover:text-cyan-400 dark:hover:text-teal-400 text-slate-400 transition-colors duration-200" aria-label="Facebook">
+                <a
+                  href="https://www.facebook.com/share/1Ac8PcPVMC/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-cyan-400 dark:hover:text-teal-400 text-slate-400 transition-colors duration-200"
+                  aria-label="Facebook"
+                >
                   <img
                     src="https://img.icons8.com/windows/96/facebook-new.png"
                     alt="Facebook"
                     className="h-5 w-5 object-contain brightness-0 invert"
                   />
                 </a>
-                <a href="#" className="hover:text-cyan-400 dark:hover:text-teal-400 text-slate-400 transition-colors duration-200" aria-label="TikTok">
+                <a
+                  href="https://www.tiktok.com/@bertytours?_r=1&_t=ZS-97uNUvwLHWh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-cyan-400 dark:hover:text-teal-400 text-slate-400 transition-colors duration-200"
+                  aria-label="TikTok"
+                >
                   <img
                     src="https://img.icons8.com/?size=100&id=vXmXtbBOhqh2&format=png&color=000000"
                     alt="TikTok"
                     className="h-5 w-5 object-contain brightness-0 invert"
                   />
                 </a>
-                <a href="#" className="hover:text-cyan-400 dark:hover:text-teal-400 text-slate-400 transition-colors duration-200" aria-label="Instagram">
+                <a
+                  href="https://www.instagram.com/bertytours"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-cyan-400 dark:hover:text-teal-400 text-slate-400 transition-colors duration-200"
+                  aria-label="Instagram"
+                >
                   <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>

@@ -146,7 +146,7 @@ export default function Home() {
               desc: 'Chat directly with Berty for custom routes & instant support.',
               cta: 'Message Us',
               url: 'https://img.icons8.com/windows/96/whatsapp--v1.png',
-              link: 'https://wa.me/94912234567',
+              link: 'https://wa.me/94776920730',
               colorClass: 'group-hover:text-emerald-500'
             },
             {
@@ -154,7 +154,7 @@ export default function Home() {
               desc: 'Watch scenic train rides, lagoon safaris, and beach updates.',
               cta: 'Watch Videos',
               url: 'https://img.icons8.com/?size=100&id=vXmXtbBOhqh2&format=png&color=000000',
-              link: '#',
+              link: 'https://www.tiktok.com/@bertytours?_r=1&_t=ZS-97uNUvwLHWh',
               colorClass: 'group-hover:text-rose-500'
             },
             {
@@ -162,7 +162,7 @@ export default function Home() {
               desc: 'Explore snapshots of tropical beaches & historical sites.',
               cta: 'Follow Gallery',
               url: 'https://img.icons8.com/?size=100&id=32309&format=png&color=000000',
-              link: '#',
+              link: 'https://www.instagram.com/bertytours',
               colorClass: 'group-hover:text-pink-500'
             },
             {
@@ -170,7 +170,7 @@ export default function Home() {
               desc: 'Join our page for reviews, announcements & group discounts.',
               cta: 'Join Community',
               url: 'https://img.icons8.com/windows/96/facebook-new.png',
-              link: '#',
+              link: 'https://www.facebook.com/share/1Ac8PcPVMC/?mibextid=wwXIfr',
               colorClass: 'group-hover:text-blue-500'
             },
             {
