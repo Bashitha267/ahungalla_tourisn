@@ -169,6 +169,7 @@ export default function PackageEditPage() {
 
   const [form, setForm] = useState<PackageForm>(defaultPackage);
   const [places, setPlaces] = useState<PlaceForm[]>([]);
+  const [deletedPlaceIds, setDeletedPlaceIds] = useState<string[]>([]);
   const [loading, setLoading] = useState(!isNew);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
@@ -213,6 +214,12 @@ export default function PackageEditPage() {
       } else {
         const { error: updateError } = await supabase.from('tour_packages').update({ ...form, updated_at: now }).eq('id', params.id as string);
         if (updateError) throw updateError;
+      }
+
+      // Delete removed places
+      if (deletedPlaceIds.length > 0) {
+        const { error: deleteError } = await supabase.from('package_places').delete().in('id', deletedPlaceIds);
+        if (deleteError) throw deleteError;
       }
 
       // Upsert places
@@ -359,7 +366,13 @@ export default function PackageEditPage() {
                 <div className="flex items-center gap-2" onClick={e => e.stopPropagation()}>
                   <button
                     type="button"
-                    onClick={() => setPlaces(p => p.filter((_, i) => i !== idx))}
+                    onClick={() => {
+                      const place = places[idx];
+                      if (place.id) {
+                        setDeletedPlaceIds(prev => [...prev, place.id!]);
+                      }
+                      setPlaces(p => p.filter((_, i) => i !== idx));
+                    }}
                     className="p-1 text-slate-500 hover:text-red-400 transition-colors"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
